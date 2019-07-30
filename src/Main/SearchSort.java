@@ -39,14 +39,14 @@ public class SearchSort {
         System.out.print("Enter an integer to look for: ");
         int target = input.nextInt();
         //linear
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         linearSearch(nums, target);
-        long linearTime = System.currentTimeMillis() - start;
+        long linearTime = System.nanoTime() - start;
         //binary
-        start = System.currentTimeMillis();
+        start = System.nanoTime();
         int index = binarySearch(nums, target);
-        long binaryTime = System.currentTimeMillis() - start;
-        if (index == -1)
+        long binaryTime = System.nanoTime() - start;
+        if (index < 0)
             System.out.println(target + " is not in the list.");
         else
             System.out.println(target + " is at index " + index);
