@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class SearchSort {
 
+    
     public static void main(String[] args) {
         boolean valid = false;
         Scanner input = new Scanner(System.in);
@@ -38,14 +39,17 @@ public class SearchSort {
         System.out.println(Arrays.toString(nums));
         System.out.print("Enter an integer to look for: ");
         int target = input.nextInt();
-        //linear
-        long start = System.nanoTime();
+        //Create Stopwatch object
+        Stopwatch sw = new Stopwatch();
         linearSearch(nums, target);
-        long linearTime = System.nanoTime() - start;
-        //binary
-        start = System.nanoTime();
+        sw.stop();
+        //Calculates the elapsed time
+        long linearTime = sw.getElapsedTime();
+        sw.start();
         int index = binarySearch(nums, target);
-        long binaryTime = System.nanoTime() - start;
+        sw.stop();
+        long binaryTime = sw.getElapsedTime();
+        //Display target value location
         if (index < 0)
             System.out.println(target + " is not in the list.");
         else
@@ -54,6 +58,12 @@ public class SearchSort {
         System.out.println("Binary: " + binaryTime + "ms");
     }
 
+    /**
+     * Linear search of integer array
+     * @param list  int array to be searched through
+     * @param key   the target integer
+     * @return      index of first target integer
+     */
     public static int linearSearch(int[] list, int key) {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == key) {
